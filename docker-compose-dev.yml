@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  market-back:
+    container_name: market-back
+    build: ./app
+    command: uvicorn main:app --host 0.0.0.0 --port 8080 --reload
+    expose:
+      - "8080"
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./app:/app
+    environment:
+      TZ: "Asia/Seoul"
+    ulimits:
+      core:
+        hard: 0
+        soft: 0
